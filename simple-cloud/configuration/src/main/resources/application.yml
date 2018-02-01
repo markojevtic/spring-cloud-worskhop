@@ -1,0 +1,15 @@
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:@mvn.server.port.eureka@/eureka/
+
+    instance:
+        hostname: ${param.eureka.instance.hostname:localhost}
+        leaseRenewalIntervalInSeconds: @mvn.eureka.instance.leaseRenewalIntervalInSeconds@
+        metadataMap:
+            instanceId: ${server.port}:${spring.application.name}
+
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 600000
+ribbon:
+  ConnectTimeout: 600000
+  ReadTimeout: 600000

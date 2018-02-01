@@ -1,0 +1,6 @@
+server.port: ${param.server.port:@mvn.server.port.eureka@}
+
+eureka:
+    client:
+        registerWithEureka: false
+        fetchRegistry: false

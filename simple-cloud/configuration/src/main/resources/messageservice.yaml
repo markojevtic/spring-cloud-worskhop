@@ -1,0 +1,3 @@
+server.port: ${param.server.port:@mvn.server.port.messageservice@}
+
+format: @mvn.messageservice.format@

@@ -1,0 +1,8 @@
+server:
+  use-forward-headers: true
+  port: ${param.server.port:@mvn.server.port.zuul@}
+
+zuul:
+    prefix: /rest
+    ignoredServices: config,eureka
+    sensitiveHeaders: Cookie,Set-Cookie

@@ -1,0 +1,5 @@
+spring:
+    application.name: wallservice
+    cloud.config:
+              uri: ${param.spring.cloud.config.uri:http://localhost:8000/}
+              failFast: true

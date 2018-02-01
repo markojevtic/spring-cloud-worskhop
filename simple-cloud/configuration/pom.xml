@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>pd.workshop</groupId>
+        <artifactId>spring-cloud-workshop</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../../</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>configuration</artifactId>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+
+        <filters.directory>${basedir}/src/main/filters</filters.directory>
+        <repositories.directory>${basedir}/target/repositories</repositories.directory>
+    </properties>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <useDefaultDelimiters>false</useDefaultDelimiters>
+                    <delimiters>
+                        <delimiter>@</delimiter>
+                    </delimiters>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>local</id>
+                        <goals>
+                            <goal>resources</goal>
+                        </goals>
+                        <phase>process-resources</phase>
+                        <configuration>
+                            <filters>
+                                <filter>${filters.directory}/local.properties</filter>
+                            </filters>
+                            <outputDirectory>${repositories.directory}/local</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>prod</id>
+                        <goals>
+                            <goal>resources</goal>
+                        </goals>
+                        <phase>process-resources</phase>
+                        <configuration>
+                            <filters>
+                                <filter>${filters.directory}/prod.properties</filter>
+                            </filters>
+                            <outputDirectory>${repositories.directory}/prod</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

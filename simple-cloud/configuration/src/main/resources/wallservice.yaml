@@ -1,0 +1,1 @@
+server.port: ${param.server.port:@mvn.server.port.wallservice@}
